@@ -1,0 +1,36 @@
+<%= form_tag author_path(@author), method: "patch" do %>
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @author.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<h2>Editing "<%= @author.title %>"</h2>
+  <div class="field<%= ' field_with_errors' if @author.errors[:title].any? %>">
+    <%= label_tag "name", "Name" %>
+    <%= text_field_tag "name", @author.name %>
+  </div>
+
+  <div class="field<%= ' field_with_errors' if @author.errors[:title].any? %>">
+    <%= label_tag "email", "Email" %>
+    <p>Must be completed.</p>
+    <%= text_field_tag "email", @author.email %>
+    <p>
+      Please type carefully as our top scientists are working around the clock to
+      enable state-of-the-art dropdown technology for this form field.
+    </p>
+  </div>
+
+  <div class="field<%= ' field_with_errors' if @author.errors[:title].any? %>">
+    <%= label_tag "phone_number", "Phone Number" %>
+    <br />
+    <%= text_area_tag "phone_number", @author.phone_number %>
+  </div>
+  <%= submit_tag "Update" %>
+<% end %>
